@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Neumorphism Design Tokens */
+  --neu-bg: #FDFBF7;
+  --neu-text: #4A3728;
+  --neu-text-secondary: #A0938D;
+  --neu-primary: #CC4E3D;
+  --neu-secondary: #E6D5C1;
+  
+  /* Shadows */
+  --shadow-light: #ffffff;
+  --shadow-dark: #E6D5C1;
+}
+
+@layer utilities {
+  .bg-neu-base {
+    background-color: var(--neu-bg);
+  }
+  
+  .text-neu-primary {
+    color: var(--neu-text);
+  }
+
+  .text-neu-accent {
+    color: var(--neu-primary);
+  }
+
+  /* Soft Convex (Card, Button) */
+  .neu-flat {
+    background: var(--neu-bg);
+    box-shadow: 6px 6px 12px var(--shadow-dark),
+                -6px -6px 12px var(--shadow-light);
+  }
+
+  /* Pressed Concave (Input, Active Button) */
+  .neu-pressed {
+    background: var(--neu-bg);
+    box-shadow: inset 6px 6px 12px var(--shadow-dark),
+                inset -6px -6px 12px var(--shadow-light);
+  }
+
+  /* Floating (FAB, Modal) */
+  .neu-float {
+    background: var(--neu-bg);
+    box-shadow: 8px 8px 16px var(--shadow-dark),
+                -8px -8px 16px var(--shadow-light);
+  }
+  
+  /* Small Button / Icon Button */
+  .neu-btn-icon {
+    @apply w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 text-neu-primary neu-flat active:neu-pressed hover:text-neu-accent;
+  }
+
+  /* Primary Button */
+  .neu-btn-primary {
+    @apply w-full py-3 rounded-xl font-bold transition-all duration-200 text-neu-accent neu-flat active:neu-pressed active:scale-[0.98];
+  }
+
+  /* Input Field Wrapper */
+  .neu-input {
+    @apply w-full rounded-xl px-4 py-3 outline-none transition-all duration-200 bg-transparent text-neu-primary placeholder-gray-400 neu-pressed focus:ring-1 focus:ring-[var(--neu-secondary)];
+  }
+}
+
+/* Hide Scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
